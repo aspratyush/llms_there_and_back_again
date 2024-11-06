@@ -38,3 +38,9 @@ output = nn.Linear(d, d * 4)(output)
 output = nn.ReLU()(output)
 output = nn.Linear(d * 4, d)(output)
 ```
+#### Output block
+- Map output back to vocabulary size to get logits (`B x C x V`).
+```
+logits = nn.Linear(d, V)(output)
+```
+- each sentence in the batch then has a mapping between context to vocabulary.
