@@ -1,5 +1,6 @@
 ### Transformers
-3 basic concepts : Tokenization -> Embedding -> Positional Encoding -> Inference -> Output Probabilities
+- 3 basic concepts : Tokenization -> Embedding -> Positional Encoding -> Inference -> Output Probabilities
+- good article : https://medium.com/@waylandzhang/transformer-architecture-llms-zero-to-hero-98b1ee51a838
 
 #### Usage in LLMs
 - As a `BaseModel` : Pretrained on massive datasets
@@ -18,7 +19,7 @@
 3 blocks:
 - multi-headed attention
 - layer normalization
-- feed forward
+- feed forward block
 
 #### Masked Multi-headed attention
 - input `X` (dimension `B x C x d`) is passed through 3 linear layers `W_k`, `W_q`, `W_v` (dimension `d x d`) to get `K`, `Q` and `V` (dimension `B x C x d`).
@@ -27,3 +28,13 @@
 - `mask` ensures to zero output future contexts for the decoder so that decoder is forced to be causal. Then softmax is applied on last dimension `torch.softmax(..., dim=-1)` to ensure each row sums to 1.
 - finally get V attention, i.e, matrix multiply softmax output by `V`. Reshape output to `B x C x N x d/N`, and then concat, followed by reshape to `B x C x d`.
 - at this stage attention output is now back to same size as input `X`. Multiply reshaped V attention with `Wo` (dimension `d x d`).
+
+#### feed forward block
+- consists of `FC1 -> ReLU -> FC2`
+- `FC1` expands dim by 4, `FC2` brings it back to original size
+```
+# Feed Forward Block
+output = nn.Linear(d, d * 4)(output)
+output = nn.ReLU()(output)
+output = nn.Linear(d * 4, d)(output)
+```
