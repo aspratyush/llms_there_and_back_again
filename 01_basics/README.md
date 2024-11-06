@@ -17,6 +17,7 @@
     a. last dimension indicates approx where a token is located (start / end)
     b. second last localizes a bit more, next one bit more, and so on.
     c. good reference - https://youtu.be/1biZfFLPRSY?t=408
+    d. Recent works have tried concatenating this (increases param count) or learning it (BERT, RoBERTa, ViT). FNet hand-crafts it Fourier style. video : https://youtu.be/M2ToEXF6Olw?t=350
 
 ### Basic Architecture
 3 blocks:
