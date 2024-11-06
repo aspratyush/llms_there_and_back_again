@@ -14,6 +14,9 @@
     b. For each sentence / element in the batch, build the embedding using the lookup. Each sentence of size `C x 1` gets converted to `C x d` after lookup.   
     c. Do this for all sentences, and we end up with `B x C x d` tensor for input sentences of size `B x C`.
 4. `Positional Encoding` : describes the location or position of an entity in a sequence so that each position is assigned a unique representation. and closer elements are close. The lookup is of size `C x d`. This is added to each batch element from the batch of size `B x C x d`.
+    a. last dimension indicates approx where a token is located (start / end)
+    b. second last localizes a bit more, next one bit more, and so on.
+    c. good reference - https://youtu.be/1biZfFLPRSY?t=408
 
 ### Basic Architecture
 3 blocks:
