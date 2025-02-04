@@ -48,3 +48,6 @@ output = nn.Linear(d * 4, d)(output)
 logits = nn.Linear(d, V)(output)
 ```
 - each sentence in the batch then has a mapping between context to vocabulary.
+
+### Generative AI
+![Gen AI Examples](./imgs/gen_ai_examples.png)
