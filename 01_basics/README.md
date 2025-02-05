@@ -51,3 +51,6 @@ logits = nn.Linear(d, V)(output)
 
 ### Generative AI
 ![Gen AI Examples](./imgs/gen_ai_examples.png)
+
+#### Common Architectures
+![Common Transformer applications](./imgs/gpt_bert_bart_t5.png)
