@@ -24,4 +24,5 @@ def get_tokens_and_indices(iterator):
   return tokenized_sentence, token_indices
 
 tokenized_sentence, token_indices = get_tokens_and_indices(my_iter)
+next(my_iter) # references to tokenized_sentence, token_indices would now be updated.
 ```
