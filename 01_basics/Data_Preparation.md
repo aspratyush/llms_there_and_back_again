@@ -1,6 +1,7 @@
 ### Data Preparation
 
 - Transformers for NLP tasks work with sentences encoded as `tokens`. The conversion is performed by `Tokenizers`.
+- [Example usage of various Tokenizers](./cheat_sheets/tokenizer_cheat_sheet.pdf)
 - Typical workflow with PyTorch:
   - build a tokenizer (e.g : `get_tokenizer` from torchtext lib, `BertTokenizer` from transformers lib, etc)
   - add a function that yields tokenized output for an input sentence. This function consumes an iterator.
