@@ -63,3 +63,6 @@ offset = torch.cumsum(offset, 0)[0:-1]
 # finally get embeddings - average of word embeddings
 my_embeddings = embedding_bag(index_flat, offsets=offset)
 ```
+
+#### Bi-gram, Tri-gram and N-gram
+![n-gram overview](./imgs/n_gram.png)
