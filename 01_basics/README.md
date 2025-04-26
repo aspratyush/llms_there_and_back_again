@@ -1,6 +1,30 @@
 ### Transformers
-- 3 basic concepts : Tokenization -> Embedding -> Positional Encoding -> Inference -> Output Probabilities
+- 3 basic concepts : Tokenization -> **Word Embedding -> Positional Encoding -> Attention** -> Inference -> Output Probabilities
 - good article : https://medium.com/@waylandzhang/transformer-architecture-llms-zero-to-hero-98b1ee51a838
+
+##### Word Embedding
+Convert input words to vectors
+##### Positional Encoding
+Helps keep track of word order
+##### Attention
+Establish relationship between words.
+- E.g : Self attention : calculates similarity between 1st word and all other words, then determine how transformer will encode it.
+
+$Attention (Q, K, V) = SoftMax(\frac{QK^T}{\sqrt{d_k}})V$
+- Q, K, V come from database terminology (hotel room db analogy)
+- Q (Query) - search term over the db
+- K (Keys) - actual contents in db found by similarity between Q and all keys in db
+- V (Value) - what is returned as a result of the search - i.e, mapping in the db
+- $\frac{QK^T}{\sqrt{d_k}}$ :
+    - scaled dot product similarities between each words.
+    - numerator gives unscaled dot product similarity between all combinations of Queries and Keys for each word.
+        - unscaled dot product measures similarity between Q and K (NOTE : cosine similarity is scaled, dot product isnt)
+    - $d_k$ refers to dimension. Scaling isnt anything systematic, but improves performance in original paper.
+- $Softmax()$
+    - convert the scaled dot product similarity into Pr.
+- $Softmax()V$
+    - scale the Values by the Pr to becomes the self-attention for each word
+    - tells how much influence each word should have on final encoding for any given word.
 
 #### Usage in LLMs
 - As a `BaseModel` : Pretrained on massive datasets
